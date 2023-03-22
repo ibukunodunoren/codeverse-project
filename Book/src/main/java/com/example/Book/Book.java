@@ -1,9 +1,9 @@
 package com.example.Book;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+
+import java.time.LocalDate;
+
 
 @Entity
 public class Book {
@@ -12,32 +12,35 @@ public class Book {
     private Integer id;
     private String title;
     private String description;
-    private String publishedDate;
+    @Column(name = "author_name")
     private String authorName;
+    private LocalDate date;
     private double price;
     private String format;
     private String language;
+    @Column(name = "isbn_number")
     private String isbnNumber;
+    @Column(name = "print_length")
     private int printLength;
     private String publisher;
+    private String image;
 
     public Book() {
     }
 
-    public Book(Integer id, String title, String description, String publishedDate,
-                String authorName, double price, String format, String language,
-                String isbnNumber, int printLength, String publisher) {
+    public Book(Integer id, String title, String description, String authorName, LocalDate date, double price, String format, String language, String isbnNumber, int printLength, String publisher, String image) {
         this.id = id;
         this.title = title;
         this.description = description;
-        this.publishedDate = publishedDate;
         this.authorName = authorName;
+        this.date = date;
         this.price = price;
         this.format = format;
         this.language = language;
         this.isbnNumber = isbnNumber;
         this.printLength = printLength;
         this.publisher = publisher;
+        this.image = image;
     }
 
     public Integer getId() {
@@ -64,20 +67,20 @@ public class Book {
         this.description = description;
     }
 
-    public String getPublishedDate() {
-        return publishedDate;
-    }
-
-    public void setPublishedDate(String publishedDate) {
-        this.publishedDate = publishedDate;
-    }
-
     public String getAuthorName() {
         return authorName;
     }
 
     public void setAuthorName(String authorName) {
         this.authorName = authorName;
+    }
+
+    public LocalDate getDate() {
+        return date;
+    }
+
+    public void setDate(LocalDate date) {
+        this.date = date;
     }
 
     public double getPrice() {
@@ -126,5 +129,13 @@ public class Book {
 
     public void setPublisher(String publisher) {
         this.publisher = publisher;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 }
